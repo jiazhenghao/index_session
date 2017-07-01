@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>会议室预订系统</title>
+    <!-- <script src="../static/js/jquery-3.2.1.min.js"></script> -->
+    <script src="js/"></script>
+    <link rel="stylesheet" href="css/index_session.css">
+    <script type="text/javascript">
+    $(function() {
+        $(".meeting_info_td").click(function() {
+            /*alert($(this).text())*/
+            var row = $(this).parent().index(); // 行位置（0起始）
+            var col = $(this).index(); // 列位置（0起始）
+            alert(col)
+            $(this).css("background", "#FF0000");
+            $(this).attr("class", "meeting_info_td_selected");
+            /*alert($(this).attr("class"))*/
+            $("#meetingdate").text($('thead').find("th").eq(col).html())
+            $("#meetingtime").text($('tbody').find("tr").eq(row).find("td").eq(0).html())
+            $("#meetingroom").text($("#meetingroom_select").val());
+            $("#form_div").show(200);
+
+        });
+        $("#submit_button").click(function(e) {
+            e.preventDefault();
+
+
+        });
+
+        $("#cancel_button").click(function(e) {
+            e.preventDefault()
+            $("#form_div").hide(200, "linear");
+            $(".meeting_info_td_selected").css("background", "#66FF66");
+            $(".meeting_info_td_selected").attr("class", "meeting_info_td");
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div id="up_div">
+        <span><span id="currentuser"></span>，您好！</span>
+        <button id="logout_button">注销</button>
+    </div>
+    <hr />
+    <div id="main_div">
+        <div id="form_div">
+            <form>
+                日期：<span id="meetingdate" name="meetingdate"></span>
+                <br /> 时间：
+                <span id="meetingtime" name="meetingtime"></span>
+                <br /> 会议室：
+                <span id="meetingroom" name="meetingroom"></span>
+                <br /> 会议名称:
+                <input id="meetingname" name="meetingname" required="required" />
+                <br />
+                <button id="submit_button">提交</button>
+                <button id="cancel_button">取消</button>
+            </form>
+        </div>
+        会议室：
+        <select id="meetingroom_select">
+            <option value="VIP">VIP</option>
+            <option value="204">204</option>
+        </select>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>周一</th>
+                    <th>周二</th>
+                    <th>周三</th>
+                    <th>周四</th>
+                    <th>周五</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>上午</td>
+                    <td class="meeting_info_td"></td>
+                    <td class="meeting_info_td"></td>
+                    <td class="meeting_info_td"></td>
+                    <td class="meeting_info_td"></td>
+                    <td class="meeting_info_td"></td>
+                </tr>
+                <tr>
+                    <td>下午</td>
+                    <td class="meeting_info_td"></td>
+                    <td class="meeting_info_td"></td>
+                    <td class="meeting_info_td"></td>
+                    <td class="meeting_info_td"></td>
+                    <td class="meeting_info_td"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
