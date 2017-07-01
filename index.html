@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>会议室预订系统</title>
+    <!-- <script src="../static/js/jquery-3.2.1.min.js"></script> -->
+    <script src="js/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index_session.css">
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="up_div">
+                <span><span id="currentuser"></span>，您好！</span>
+                <button id="logout_button">注销</button>
+            </div>
+            <hr>
+            <div id="main_div" class="row col-lg-12">
+                <div id="form_div">
+                    <form>
+                        日期：<span id="meetingdate" name="meetingdate"></span>
+                        <br /> 时间：
+                        <span id="meetingtime" name="meetingtime"></span>
+                        <br /> 会议室：
+                        <span id="meetingroom" name="meetingroom"></span>
+                        <br /> 会议名称:
+                        <input id="meetingname" name="meetingname" required="required" />
+                        <br />
+                        <button id="submit_button">提交</button>
+                        <button id="cancel_button">取消</button>
+                    </form>
+                </div>
+                <div class="row">
+                    <form action="" class="form-inline">
+                        <div class="form-group">
+                            <label for="meetingroom_select">会议室：</label>
+                            <select id="meetingroom_select" class="form-control" name="meetingroom_select">
+                                <option value="VIP">VIP</option>
+                                <option value="204">204</option>
+                            </select>
+                        </div>
+                    </form>
+                    <table border="1" class="table table-bordered col-lg-12">
+                        <thead>
+                            <tr class="success">
+                                <th></th>
+                                <th>周一</th>
+                                <th>周二</th>
+                                <th>周三</th>
+                                <th>周四</th>
+                                <th>周五</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="">
+                                <td>上午</td>
+                                <td class="meeting_info_td">
+                                    <button class="btn btn-info">未预约</button>
+                                </td>
+                                <td class="meeting_info_td">
+                                    <button class="btn btn-info">未预约</button>
+                                </td>
+                                <td class="meeting_info_td">
+                                    <button class="btn btn-info">未预约</button>
+                                </td>
+                                <td class="meeting_info_td">
+                                    <button class="btn btn-info">未预约</button>
+                                </td>
+                                <td class="meeting_info_td">
+                                    <button class="btn btn-info">未预约</button>
+                                </td>
+                            </tr>
+                            <tr class="">
+                                <td>下午</td>
+                                <td class="meeting_info_td">
+                                    <button class="btn btn-info">未预约</button>
+                                </td>
+                                <td class="meeting_info_td">
+                                    <button class="btn btn-info">未预约</button>
+                                </td>
+                                <td class="meeting_info_td">
+                                    <button class="btn btn-info">未预约</button>
+                                </td>
+                                <td class="meeting_info_td">
+                                    <button class="btn btn-info">未预约</button>
+                                </td>
+                                <td class="meeting_info_td">
+                                    <button class="btn btn-info">未预约</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+$(document).ready(function() {
+    $(".meeting_info_td").click(function() {
+
+        /*alert($(this).text())*/
+        var row = $(this).parent().index(); // 行位置（0起始）
+        var col = $(this).index(); // 列位置（0起始）
+        alert(col);
+        //$(this).css("background", "#FF0000");
+        $(this).attr("class", "meeting_info_td_selected");
+        /*alert($(this).attr("class"))*/
+        $("#meetingdate").text($('thead').find("th").eq(col).html());
+        $("#meetingtime").text($('tbody').find("tr").eq(row).find("td").eq(0).html());
+        $("#meetingroom").text($("#meetingroom_select").val());
+        $(this).children().text("正在预约中");
+        $(this).children().attr("class", "btn btn-success");
+        $("#form_div").show(200);
+
+
+    });
+    $("#submit_button").click(function(e) {
+        e.preventDefault();
+    });
+
+    $("#cancel_button").click(function(e) {
+        e.preventDefault()
+        $("#form_div").hide(200, "linear");
+        $(".meeting_info_td_selected").css("background", "#66FF66");
+        $(".meeting_info_td_selected").attr("class", "meeting_info_td");
+    });
+
+});
+</script>
+
+</html>
