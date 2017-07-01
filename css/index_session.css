@@ -1,23 +1,24 @@
-#up_div{
-				text-align:right;
-			}
-			#main_div{
-				margin:0 auto;
-				text-align:center;
-				background: #66FF66;
-				
-				width:600px;
-			}
-			#form_div{
-				margin:0 auto;
-	            background: #FFFF00;
-	            width:200px;
-	            height:200px;
-	            display:none;
-	            z-index:999;
-			}
-			table{
-				margin:0 auto;
-				text-align:center;
-			}
-			
+#up_div {
+    text-align: right;
+}
+
+#main_div {
+    margin: 0 auto;
+    text-align: center;
+    background: #66FF66;
+    width: 600px;
+}
+
+#form_div {
+    margin: 0 auto;
+    background: #FFFF00;
+    width: 200px;
+    height: 200px;
+    display: none;
+    z-index: 999;
+}
+
+table {
+    margin: 0 auto;
+    text-align: center;
+}
