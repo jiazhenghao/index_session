@@ -20,7 +20,7 @@
             </div>
             <hr>
             <div id="main_div" class="row col-lg-12">
-                <div id="form_div">
+                <!-- <div id="form_div">
                     <form>
                         日期：<span id="meetingdate" name="meetingdate"></span>
                         <br /> 时间：
@@ -33,7 +33,7 @@
                         <button id="submit_button">提交</button>
                         <button id="cancel_button">取消</button>
                     </form>
-                </div>
+                </div> -->
                 <div class="row">
                     <form action="" class="form-inline">
                         <div class="form-group">
@@ -56,40 +56,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="">
+                            <tr class="warning">
                                 <td>上午</td>
                                 <td class="meeting_info_td">
-                                    <button class="btn btn-info">未预约</button>
+                                    <span type="button" class="btn btn-alert" data-toggle="modal" data-target=".bs-example-modal-lg">未预约</span>
                                 </td>
                                 <td class="meeting_info_td">
-                                    <button class="btn btn-info">未预约</button>
+                                    <span type="button" class="btn btn-alert" data-toggle="modal" data-target=".bs-example-modal-lg">未预约</span>
                                 </td>
                                 <td class="meeting_info_td">
-                                    <button class="btn btn-info">未预约</button>
+                                    <span type="button" class="btn btn-alert" data-toggle="modal" data-target=".bs-example-modal-lg">未预约</span>
                                 </td>
                                 <td class="meeting_info_td">
-                                    <button class="btn btn-info">未预约</button>
+                                    <span type="button" class="btn btn-alert" data-toggle="modal" data-target=".bs-example-modal-lg">未预约</span>
                                 </td>
                                 <td class="meeting_info_td">
-                                    <button class="btn btn-info">未预约</button>
+                                    <span type="button" class="btn btn-alert" data-toggle="modal" data-target=".bs-example-modal-lg">未预约</span>
                                 </td>
                             </tr>
-                            <tr class="">
+                            <tr class="danger">
                                 <td>下午</td>
                                 <td class="meeting_info_td">
-                                    <button class="btn btn-info">未预约</button>
+                                    <span type="button" class="btn btn-alert" data-toggle="modal" data-target=".bs-example-modal-lg">未预约</span>
                                 </td>
                                 <td class="meeting_info_td">
-                                    <button class="btn btn-info">未预约</button>
+                                    <span type="button" class="btn btn-alert" data-toggle="modal" data-target=".bs-example-modal-lg">未预约</span>
                                 </td>
                                 <td class="meeting_info_td">
-                                    <button class="btn btn-info">未预约</button>
+                                    <span type="button" class="btn btn-alert" data-toggle="modal" data-target=".bs-example-modal-lg">未预约</span>
                                 </td>
                                 <td class="meeting_info_td">
-                                    <button class="btn btn-info">未预约</button>
+                                    <span type="button" class="btn btn-alert" data-toggle="modal" data-target=".bs-example-modal-lg">未预约</span>
                                 </td>
                                 <td class="meeting_info_td">
-                                    <button class="btn btn-info">未预约</button>
+                                    <span type="button" class="btn btn-alert" data-toggle="modal" data-target=".bs-example-modal-lg">未预约</span>
                                 </td>
                             </tr>
                         </tbody>
@@ -98,25 +98,83 @@
             </div>
         </div>
     </div>
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <!-- <form>
+                    日期：<span id="meetingdate" name="meetingdate"></span>
+                    <br /> 时间：
+                    <span id="meetingtime" name="meetingtime"></span>
+                    <br /> 会议室：
+                    <span id="meetingroom" name="meetingroom"></span>
+                    <br /> 会议名称:
+                    <input id="meetingname" name="meetingname" required="required" />
+                    <br />
+                    <button id="submit_button">提交</button>
+                    <button id="cancel_button">取消</button>
+                </form> -->
+                <div class="modal-header">
+                    <h4 class="modal-title">会议室预定</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="data" class="col-sm-4 control-label">日期</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="data">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="time" class="col-sm-4 control-label">时间</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="time">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="room" class="col-sm-4 control-label">会议室</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="room">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="meeting" class="col-sm-4 control-label">会议名称</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="meeting">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" id="submit_button">提交</button>
+                    <button type="button" class="btn btn-default" id="cancel_button" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script>
 $(document).ready(function() {
     $(".meeting_info_td").click(function() {
 
-        /*alert($(this).text())*/
-        var row = $(this).parent().index(); // 行位置（0起始）
+        // /*alert($(this).text())*/
+        // var row = $(this).parent().index(); // 行位置（0起始）
         var col = $(this).index(); // 列位置（0起始）
-        alert(col);
-        //$(this).css("background", "#FF0000");
-        $(this).attr("class", "meeting_info_td_selected");
-        /*alert($(this).attr("class"))*/
-        $("#meetingdate").text($('thead').find("th").eq(col).html());
-        $("#meetingtime").text($('tbody').find("tr").eq(row).find("td").eq(0).html());
-        $("#meetingroom").text($("#meetingroom_select").val());
-        $(this).children().text("正在预约中");
-        $(this).children().attr("class", "btn btn-success");
-        $("#form_div").show(200);
+        // console.log(col);
+        // alert(col);
+        // //$(this).css("background", "#FF0000");
+        // $(this).attr("class", "meeting_info_td_selected");
+        // /*alert($(this).attr("class"))*/
+        console.log($(this).parent().find("td").eq(0).html());
+        console.log($("thead").find("th").eq(col).html());
+        $("#data").val($("thead").find("th").eq(col).html());
+        $("#time").val($(this).parent().find("td").eq(0).html());
+        $("#room").val($("#meetingroom_select").val());
+        //alert($("#meetingdate").text($('thead').find("th").eq(col).html()));
+        // $("#meetingtime").text($('tbody').find("tr").eq(row).find("td").eq(0).html());
+        // $("#meetingroom").text($("#meetingroom_select").val());
+        // $(this).children().text("正在预约中");
+        // $(this).children().attr("class", "btn btn-success");
+        // $("#form_div").show(200);
 
 
     });
